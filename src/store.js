@@ -33,9 +33,11 @@ function findProducts(belowCost) {
   return result;
 }
 
+
+
 function calculateTotalprice(products) {
   var sum = 0;
-  for (var i = products.length - 1; i >= 0; i--) {
+  for (i = 0, len = products.length; i < len; i++) {
     sum += products[i].price;
   }
   return sum;
