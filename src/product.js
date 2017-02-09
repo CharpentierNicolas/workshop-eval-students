@@ -3,6 +3,7 @@ var chalk = require('chalk');
 function Product(name, price) {
   this.name = name;
   this.price = price;
+
   this.toString = function(currency, rateCurrency) {
     var currency = currency || '$';
     var rateCurrency = rateCurrency || 1;
@@ -10,16 +11,25 @@ function Product(name, price) {
   }
 }
 
+
 /*function Book(name, price, isbn) {
  Product.apply(this, [name, price]);
  this.isbn = isbn;
 }*/
 
 class Book extends Product {
-  constructor(name, price, isbn) {
+  constructor(name, price, isbn, minDuration, maxDuration) {
       super(name, price)
       this.isbn = isbn;
+      this.minDuration = minDuration;
+      this.maxDuration = maxDuration;
   }
+}
+
+Book.prototype.getDuration = function(minDuration, maxDuration) {
+  var minDuration = minDuration || 'minutes';
+  var maxDuration = maxDuration || 'minutes';
+
 }
 
 Book.prototype = Object.create(Product.prototype, {
@@ -32,11 +42,19 @@ Book.prototype = Object.create(Product.prototype, {
 }*/
 
 class DVD extends Product{
-  constructor(name, price, moovie) {
+  constructor(name, price, moovie, runningTime) {
       super(name, price)
       this.moovie = moovie;
+      this.runningTime = runningTime;
   }
 }
+
+DVD.prototype.getDuration = function(runningTime) {
+  var runningTime = runningTime || 'minutes';
+  return runningTime;
+
+}
+
 DVD.prototype = Object.create(Product.prototype, {
   constructor: {value: DVD}
 });
@@ -49,10 +67,18 @@ DVD.prototype = Object.create(Product.prototype, {
 }*/
 
 class VideoGame extends Product{
-  constructor(name, price, platform) {
+  constructor(name, price, platform, minDuration, maxDuration) {
       super(name, price)
       this.platform = platform;
+      this.minDuration = minDuration;
+      this.maxDuration = maxDuration;
   }
+}
+
+VideoGame.prototype.getDuration = function(minDuration, maxDuration) {
+  var minDuration = minDuration || 'minutes';
+  var maxDuration = maxDuration || 'minutes';
+
 }
 
 VideoGame.prototype = Object.create(Product.prototype, {
