@@ -47,12 +47,20 @@ function calculateTotalprice(products) {
   return sum;
 }
 
-function toString(currency, rateCurrency) {
+/*function toString(currency, rateCurrency) {
   var result = chalk.green('The store is open, ' + products.length + ' articles are available :');
   for (var i = products.length - 1; i >= 0; i--) {
     result += '\n - ' + products[i].toString(currency, rateCurrency);
   }
   return result;
+}*/
+
+var toString = (currency, rateCurrency) => {
+  var result = chalk.green('The store is open, ' + products.length + ' articles are available :');
+    for (var i = products.length - 1; i >= 0; i--) {
+      result += '\n - ' + products[i].toString(currency, rateCurrency);
+    }
+    return result;
 }
 
 function open() {

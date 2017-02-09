@@ -10,26 +10,51 @@ function Product(name, price) {
   }
 }
 
-function Book(name, price, isbn) {
-  Product.apply(this, [name, price]);
-  this.isbn = isbn;
+/*function Book(name, price, isbn) {
+ Product.apply(this, [name, price]);
+ this.isbn = isbn;
+}*/
+
+class Book extends Product {
+  constructor(name, price, isbn) {
+      super(name, price)
+      this.isbn = isbn;
+  }
 }
+
 Book.prototype = Object.create(Product.prototype, {
   constructor: {value: Book}
 });
 
-function DVD(name, price, moovie) {
-  Product.apply(this, [name, price]);
-  this.moovie = moovie;
+/*function DVD(name, price, moovie) {
+ Product.apply(this, [name, price]);
+ this.moovie = moovie;
+}*/
+
+class DVD extends Product{
+  constructor(name, price, moovie) {
+      super(name, price)
+      this.moovie = moovie;
+  }
 }
 DVD.prototype = Object.create(Product.prototype, {
   constructor: {value: DVD}
 });
 
-function VideoGame(name, price, platform) {
-  Product.apply(this, [name, price]);
-  this.platform = platform;
+
+
+/*function VideoGame(name, price, platform) {
+ Product.apply(this, [name, price]);
+ this.platform = platform;
+}*/
+
+class VideoGame extends Product{
+  constructor(name, price, platform) {
+      super(name, price)
+      this.platform = platform;
+  }
 }
+
 VideoGame.prototype = Object.create(Product.prototype, {
   constructor: {value: VideoGame}
 });
